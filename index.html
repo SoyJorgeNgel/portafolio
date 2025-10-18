@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<!-- La clase 'dark' se añadirá aquí con JS -->
+<html lang="es" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Portafolio - Jorge Angel</title>
+
+        <script src="js/tailwindcss_3.4.17.js"></script>
+
+        <script>
+        tailwind.config = {
+            darkMode: 'class', //Habilita el modo oscuro de las clases
+        }
+        </script>
+
+        <script>
+        //Carga el teme segun la preferencia del usuario
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+
+        <!--Boxicons CDN) -->
+        <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css'
+            rel='stylesheet'>
+        <link
+            href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css'
+            rel='stylesheet'>
+
+        <style>
+        .typing-cursor {
+            border-right: 3px solid;
+            animation: blink 0.7s step-end infinite;
+            border-color: theme('colors.blue.400');
+        }
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: inherit; }
+        }
+    </style>
+    </head>
+    <body
+        class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-300">
+
+        <header
+            class="bg-white/80 dark:bg-gray-900/80 sticky top-0 z-50 shadow-lg backdrop-blur-lg">
+            <div
+                class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <a href="#inicio"
+                    class="text-2xl font-bold text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 transition">
+                    Jorge Angel
+                </a>
+                <nav
+                    class="hidden md:flex space-x-8 text-lg font-medium text-gray-700 dark:text-gray-300">
+                    <a href="#inicio"
+                        class="hover:text-blue-500 dark:hover:text-blue-400 transition">Inicio</a>
+                    <a href="#proyectos"
+                        class="hover:text-blue-500 dark:hover:text-blue-400 transition">Proyectos</a>
+                    <a href="#habilidades"
+                        class="hover:text-blue-500 dark:hover:text-blue-400 transition">Tecnologías</a>
+                    <a href="#acerca-de"
+                        class="hover:text-blue-500 dark:hover:text-blue-400 transition">Sobre
+                        Mí</a>
+                    <a href="#contacto"
+                        class="hover:text-blue-500 dark:hover:text-blue-400 transition">Contacto</a>
+                </nav>
+                <!-- El color del texto del botón ahora se controla con clases dark: -->
+                <button id="theme-toggle" aria-label="Cambiar tema"
+                    class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 text-blue-500 dark:text-yellow-400 hover:bg-gray-300 dark:hover:bg-gray-600 text-2xl transition">
+                    <!-- Este icono cambiará entre bx-moon y bx-sun -->
+                    <i id="theme-icon" class='bx'></i>
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <section id="inicio"
+                class="py-20 md:py-32 border-b border-gray-200 dark:border-gray-700">
+                <div
+                    class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-10">
+                    <div class="md:w-1/2 text-center md:text-left">
+                        <p
+                            class="text-xl text-blue-500 dark:text-blue-400 font-semibold mb-2">¡Hola,
+                            soy!</p>
+                        <h1
+                            class="text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-white leading-tight">
+                            <span id="typed-name"></span><span
+                                class="typing-cursor"></span>
+                        </h1>
+                        <p
+                            class="mt-4 text-2xl text-gray-600 dark:text-gray-400">
+                            Desarrollador <span
+                                class="font-bold text-blue-500 dark:text-blue-400">Full-Stack</span>
+                            con enfoque en <span
+                                class="font-bold text-blue-500 dark:text-blue-400">backend</span>.
+                        </p>
+                        <div
+                            class="mt-8 flex justify-center md:justify-start gap-4 items-center">
+                            <a href="ruta/a/tu/cv.pdf" download
+                                class="bg-blue-600 text-white px-5 py-3 rounded-lg hover:bg-blue-700 transition">
+                                Descargar CV
+                            </a>
+                            <a
+                                href="https://www.linkedin.com/in/jorge-angel-sanchez-perez-61026a31b/"
+                                target="_blank"
+                                class="text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 text-4xl transition"
+                                aria-label="LinkedIn">
+                                <i class="bxl bx-linkedin"></i>
+                            </a>
+                            <a href="https://github.com/SoyJorgeNgel"
+                                target="_blank"
+                                class="text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 text-4xl transition"
+                                aria-label="GitHub">
+                                <i class="bxl bx-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <img src="images/mi_foto.jpg" alt="Mi mejor foto"
+                            class="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover shadow-2xl border-4 border-blue-500/50">
+                    </div>
+                </div>
+            </section>
+
+            <section id="proyectos"
+                class="py-20 bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+                <div class="container mx-auto px-6">
+                    <h2
+                        class="text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
+                        Mis Proyectos
+                    </h2>
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                        <!-- Proyecto 1 -->
+                        <div
+                            class="bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-2xl overflow-hidden transform hover:scale-[1.03] transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400">
+                            <img src="images/proyecto_punto_venta.png"
+                                alt="Proyecto punto de venta en PHP"
+                                class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3
+                                    class="text-xl font-bold text-gray-900 dark:text-white mb-2">Punto
+                                    de venta</h3>
+                                <p
+                                    class="text-gray-600 dark:text-gray-400 mb-4 text-sm">
+                                    Sistema punto de venta con control de
+                                    compras, ventas, actualización automática de
+                                    inventario y generación de tickets y
+                                    reportes.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span
+                                        class="bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300 text-xs font-semibold px-3 py-1 rounded-full">PHP</span>
+                                    <span
+                                        class="bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300 text-xs font-semibold px-3 py-1 rounded-full">JavaScript</span>
+                                    <span
+                                        class="bg-violet-100 text-violet-800 dark:bg-violet-900/50 dark:text-violet-300 text-xs font-semibold px-3 py-1 rounded-full">Bootstrap</span>
+                                    <span
+                                        class="bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-300 text-xs font-semibold px-3 py-1 rounded-full">MySQL</span>
+                                </div>
+                                <div class="flex space-x-6">
+                                    <a
+                                        href="https://www.youtube.com/watch?v=oDZb2bS2hfk"
+                                        target="_blank"
+                                        class="text-blue-500 dark:text-blue-400 hover:underline font-semibold flex items-center">
+                                        <i class='bxl bx-youtube mr-2'></i> Demo
+                                    </a>
+                                    <a
+                                        href="https://github.com/SoyJorgeNgel/sistema-ventas-php"
+                                        target="_blank"
+                                        class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white flex items-center">
+                                        <i class='bxl bx-github mr-2'></i>
+                                        Código
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Proyecto 2 -->
+                        <div
+                            class="bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-2xl overflow-hidden transform hover:scale-[1.03] transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400">
+                            <img src="images/proyecto_gestor_flotas.png"
+                                alt="Proyecto 2"
+                                class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3
+                                    class="text-xl font-bold text-gray-900 dark:text-white mb-2">Sistema
+                                    de Gestion de Flotas</h3>
+                                <p
+                                    class="text-gray-600 dark:text-gray-400 mb-4 text-sm">
+                                    Sistema gestor de flotas orientado a la
+                                    administración de una empresa de
+                                    tractocamiones, diseñado para optimizar la
+                                    organización de viajes y reducir conflictos
+                                    logísticos.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span
+                                        class="bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300 text-xs font-semibold px-3 py-1 rounded-full">Laravel</span>
+                                    <span
+                                        class="bg-fuchsia-100 text-fuchsia-800 dark:bg-fuchsia-900/50 dark:text-fuchsia-300 text-xs font-semibold px-3 py-1 rounded-full">Livewire</span>
+                                    <span
+                                        class="bg-sky-100 text-sky-800 dark:bg-sky-900/50 dark:text-sky-300 text-xs font-semibold px-3 py-1 rounded-full">Tailwind
+                                        CSS</span>
+                                    <span
+                                        class="bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-300 text-xs font-semibold px-3 py-1 rounded-full">MySQL</span>
+                                </div>
+                                <div class="flex space-x-6">
+                                    <a
+                                        href="https://youtu.be/pzTCYD2KH_g?si=KS7baUCPKp5TKAvd"
+                                        target="_blank"
+                                        class="text-blue-500 dark:text-blue-400 hover:underline font-semibold flex items-center">
+                                        <i class='bxl bx-youtube mr-2'></i> Demo
+                                    </a>
+                                    <a
+                                        href="https://github.com/SoyJorgeNgel/gestor-de-flotas"
+                                        target="_blank"
+                                        class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white flex items-center">
+                                        <i class='bxl bx-github mr-2'></i>
+                                        Código
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Proyecto 3 -->
+                        <div
+                            class="bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-2xl overflow-hidden transform hover:scale-[1.03] transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400">
+                            <img src="images/proyecto_materias_primas.png"
+                                alt="Proyecto 3"
+                                class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3
+                                    class="text-xl font-bold text-gray-900 dark:text-white mb-2">Módulo
+                                    de control de materias primas</h3>
+                                <p
+                                    class="text-gray-600 dark:text-gray-400 mb-4 text-sm">
+                                    Módulo conectado a la base de datos de la
+                                    empresa, permitiendo registrar, monitorear y
+                                    administrar el inventario en tiempo real.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span
+                                        class="bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300 text-xs font-semibold px-3 py-1 rounded-full">Laravel</span>
+                                    <span
+                                        class="bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300 text-xs font-semibold px-3 py-1 rounded-full">JavaScript</span>
+                                    <span
+                                        class="bg-violet-100 text-violet-800 dark:bg-violet-900/50 dark:text-violet-300 text-xs font-semibold px-3 py-1 rounded-full">Bootstrap</span>
+                                    <span
+                                        class="bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-300 text-xs font-semibold px-3 py-1 rounded-full">SQL
+                                        Server</span>
+                                </div>
+                                <div class="flex space-x-6">
+                                    <a
+                                        href="https://youtu.be/tfioSuD1psU?si=ZKKDdF1cV2XmD1kw"
+                                        target="_blank"
+                                        class="text-blue-500 dark:text-blue-400 hover:underline font-semibold flex items-center">
+                                        <i class='bxl bx-youtube mr-2'></i> Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Proyecto 4 -->
+                        <div
+                            class="bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-2xl overflow-hidden transform hover:scale-[1.03] transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400">
+                            <img src="images/proyecto_to_do.png"
+                                alt="Proyecto To-Do List"
+                                class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3
+                                    class="text-xl font-bold text-gray-900 dark:text-white mb-2">To-Do
+                                    List</h3>
+                                <p
+                                    class="text-gray-600 dark:text-gray-400 mb-4 text-sm">
+                                    Proyecto tipo To-Do List orientado al
+                                    backend, desarrollado para demostrar
+                                    conocimientos en PHP, MySQL, JavaScript,
+                                    HTML y Bootstrap.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span
+                                        class="bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300 text-xs font-semibold px-3 py-1 rounded-full">PHP</span>
+                                    <span
+                                        class="bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300 text-xs font-semibold px-3 py-1 rounded-full">JavaScript</span>
+                                    <span
+                                        class="bg-violet-100 text-violet-800 dark:bg-violet-900/50 dark:text-violet-300 text-xs font-semibold px-3 py-1 rounded-full">Bootstrap</span>
+                                    <span
+                                        class="bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-300 text-xs font-semibold px-3 py-1 rounded-full">MySQL</span>
+                                </div>
+                                <div class="flex space-x-6">
+                                    <a
+                                        href="https://youtu.be/pzTCYD2KH_g?si=KS7baUCPKp5TKAvd"
+                                        target="_blank"
+                                        class="text-blue-500 dark:text-blue-400 hover:underline font-semibold flex items-center">
+                                        <i class='bxl bx-youtube mr-2'></i> Demo
+                                    </a>
+                                    <a
+                                        href="https://github.com/SoyJorgeNgel/mytodo"
+                                        target="_blank"
+                                        class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white flex items-center">
+                                        <i class='bxl bx-github mr-2'></i>
+                                        Código
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="habilidades"
+                class="py-20 border-b border-gray-200 dark:border-gray-700">
+                <div class="container mx-auto px-6">
+                    <h2
+                        class="text-4xl font-bold text-center text-gray-900 dark:text-white mb-16">Tecnologías</h2>
+                    <!-- Backend -->
+                    <div class="mb-12">
+                        <h3
+                            class="text-2xl font-bold text-blue-500 dark:text-blue-400 mb-6 text-center">Backend</h3>
+                        <div
+                            class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 text-center max-w-4xl mx-auto">
+                            <div
+                                class="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1 border border-transparent hover:border-indigo-400">
+                                <i
+                                    class='bxl bx-php text-5xl text-indigo-400 mb-3'></i>
+                                <p class="font-semibold">PHP</p>
+                            </div>
+                            <div
+                                class="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1 border border-transparent hover:border-red-400">
+                                <i
+                                    class='bxl bx-java text-5xl text-red-400 mb-3'></i>
+                                <p class="font-semibold">Java</p>
+                            </div>
+                            <div
+                                class="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1 border border-transparent hover:border-red-500">
+                                <i
+                                    class='bxl bx-laravel text-5xl text-red-500 mb-3'></i>
+                                <p class="font-semibold">Laravel</p>
+                            </div>
+                            <div
+                                class="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1 border border-transparent hover:border-blue-400">
+                                <i
+                                    class='bxl bx-my-sql text-5xl text-blue-400 mb-3'></i>
+                                <p class="font-semibold">MySQL</p>
+                            </div>
+                            <div
+                                class="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1 border border-transparent hover:border-gray-400">
+                                <i
+                                    class='bx bx-database text-5xl text-gray-400 mb-3'></i>
+                                <p class="font-semibold">SQL Server</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Frontend -->
+                    <div class="mb-12">
+                        <h3
+                            class="text-2xl font-bold text-blue-500 dark:text-blue-400 mb-6 text-center">Frontend</h3>
+                        <div
+                            class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 text-center max-w-4xl mx-auto">
+                            <div
+                                class="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1 border border-transparent hover:border-orange-500">
+                                <i
+                                    class='bxl bx-html5 text-5xl text-orange-500 mb-3'></i>
+                                <p class="font-semibold">HTML5</p>
+                            </div>
+                            <div
+                                class="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1 border border-transparent hover:border-blue-500">
+                                <i
+                                    class='bxl bx-css3 text-5xl text-blue-500 mb-3'></i>
+                                <p class="font-semibold">CSS3</p>
+                            </div>
+                            <div
+                                class="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1 border border-transparent hover:border-yellow-400">
+                                <i
+                                    class='bxl bx-javascript text-5xl text-yellow-400 mb-3'></i>
+                                <p class="font-semibold">JavaScript</p>
+                            </div>
+                            <div
+                                class="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1 border border-transparent hover:border-purple-500">
+                                <i
+                                    class='bxl bx-bootstrap text-5xl text-purple-500 mb-3'></i>
+                                <p class="font-semibold">Bootstrap</p>
+                            </div>
+                            <div
+                                class="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1 border border-transparent hover:border-cyan-400">
+                                <i
+                                    class='bxl bx-tailwind-css text-5xl text-cyan-400 mb-3'></i>
+                                <p class="font-semibold">Tailwind CSS</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Herramientas -->
+                    <div class="mb-12">
+                        <h3
+                            class="text-2xl font-bold text-blue-500 dark:text-blue-400 mb-6 text-center">Herramientas</h3>
+                        <div
+                            class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 text-center max-w-4xl mx-auto">
+                            <div
+                                class="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1 border border-transparent hover:border-orange-600">
+                                <i
+                                    class='bxl bx-git text-5xl text-orange-600 mb-3'></i>
+                                <p class="font-semibold">Git</p>
+                            </div>
+                            <div
+                                class="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1 border border-transparent hover:border-gray-500">
+                                <i
+                                    class='bxl bx-github text-5xl text-gray-800 dark:text-gray-200 mb-3'></i>
+                                <p class="font-semibold">GitHub</p>
+                            </div>
+                            <div
+                                class="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1 border border-transparent hover:border-red-500">
+                                <i
+                                    class='bxl bx-npm text-5xl text-red-500 mb-3'></i>
+                                <p class="font-semibold">NPM</p>
+                            </div>
+                            <div
+                                class="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1 border border-transparent hover:border-green-400">
+                                <i
+                                    class='bx bx-terminal text-5xl text-green-400 mb-3'></i>
+                                <p class="font-semibold">Composer</p>
+                            </div>
+                            <div
+                                class="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1 border border-transparent hover:border-blue-400">
+                                <i
+                                    class='bxl bx-visual-studio text-5xl text-blue-400 mb-3'></i>
+                                <p class="font-semibold">VS Code</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Aprendiendo -->
+                    <div>
+                        <h3
+                            class="text-2xl font-bold text-green-500 dark:text-green-400 mb-6 text-center">Aprendiendo</h3>
+                        <div
+                            class="grid grid-cols-2 gap-6 text-center max-w-md mx-auto">
+                            <div
+                                class="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1 border border-transparent hover:border-blue-500">
+                                <i
+                                    class='bxl bx-docker text-5xl text-blue-500 mb-3'></i>
+                                <p class="font-semibold">Docker</p>
+                            </div>
+                            <div
+                                class="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1 border border-transparent hover:border-green-500">
+                                <i
+                                    class='bxl bx-vuejs text-5xl text-green-500 mb-3'></i>
+                                <p class="font-semibold">Vue 3</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="acerca-de"
+                class="py-20 bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+                <div class="container mx-auto px-6 max-w-4xl">
+                    <h2
+                        class="text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
+                        Sobre Mí
+                    </h2>
+                    <div
+                        class="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg border-t-4 border-blue-500 dark:border-blue-400">
+                        <p
+                            class="text-lg text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+                            Comencé mi camino en la programación al ingresar al
+                            Instituto Tecnológico Superior de San Martín
+                            Texmelucan (ITSSMT) en 2020, donde aprendí a
+                            programar en Java. En 2022 descubrí el desarrollo
+                            web, área que me fascinó y motivó a seguir
+                            aprendiendo por mi cuenta. Desde entonces, he
+                            explorado y practicado con tecnologías como
+                            JavaScript, Laravel y Tailwind CSS.
+                        </p>
+                        <p
+                            class="text-lg text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+                            Me apasiona aprender nuevas herramientas y encontrar
+                            diferentes formas de resolver problemas reales con
+                            los lenguajes que ya domino. Fuera del código,
+                            disfruto de los videojuegos y la lucha libre.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contacto" class="py-20">
+                <div class="container mx-auto px-6 max-w-2xl">
+                    <h2
+                        class="text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
+                        Contáctame
+                    </h2>
+                    <div class="text-center">
+                        <p
+                            class="text-lg text-gray-700 dark:text-gray-400 mb-12">
+                            ¿Interesado en mis servicios o tienes alguna
+                            pregunta? ¡No dudes en contactarme!
+                        </p>
+                        <a href="mailto:jorgeansape@gmail.com"
+                            class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                            Escríbeme
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer
+            class="bg-white dark:bg-gray-900 py-8 border-t border-gray-200 dark:border-gray-700">
+            <div class="container mx-auto px-6 text-center">
+                <div class="flex justify-center space-x-6 mb-4">
+                    <a
+                        href="https://www.linkedin.com/in/jorge-angel-sanchez-perez-61026a31b/"
+                        target="_blank"
+                        class="text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 text-3xl transition">
+                        <i class="bxl bx-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/SoyJorgeNgel" target="_blank"
+                        class="text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 text-3xl transition">
+                        <i class="bxl bx-github"></i>
+                    </a>
+                    <a href="mailto:jorgeansape@gmail.com"
+                        class="text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 text-3xl transition">
+                        <i class="bx bx-envelope"></i>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-4">
+                    &copy; 2025 Jorge Angel. Desarrollado con Tailwind CSS.
+                </p>
+            </div>
+        </footer>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Efecto de máquina de escribir (sin cambios) ---
+            const nameToType = "Jorge Angel Sanchez Perez";
+            const typedTextElement = document.getElementById('typed-name');
+            let charIndex = 0;
+            function type() {
+                if (charIndex < nameToType.length) {
+                    typedTextElement.textContent += nameToType.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(type, 100);
+                }
+            }
+            type();
+
+            // --- Lógica para el botón de cambio de tema (CORREGIDA) ---
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const htmlEl = document.documentElement;
+
+            // Función para actualizar el icono (luna o sol)
+            const updateIcon = () => {
+                if (htmlEl.classList.contains('dark')) {
+                    themeIcon.classList.remove('bx-moon');
+                    themeIcon.classList.add('bx-sun');
+                } else {
+                    themeIcon.classList.remove('bx-sun');
+                    themeIcon.classList.add('bx-moon');
+                }
+            };
+
+            // Event listener para el clic en el botón
+            themeToggle.addEventListener('click', () => {
+                // Alterna la clase 'dark' en el elemento <html>
+                htmlEl.classList.toggle('dark');
+                
+                // Guarda la preferencia en localStorage
+                if (htmlEl.classList.contains('dark')) {
+                    localStorage.theme = 'dark';
+                } else {
+                    localStorage.theme = 'light';
+                }
+                
+                // Actualiza el icono para que coincida con el nuevo tema
+                updateIcon();
+            });
+
+            // Asegúrate de que el icono sea el correcto al cargar la página
+            updateIcon();
+        });
+    </script>
+    </body>
+</html>
