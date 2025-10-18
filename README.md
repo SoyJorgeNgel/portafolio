@@ -14,6 +14,6 @@ Este proyecto fue creado para mostrar mis habilidades, experiencia y algunos de 
 
 ---
 
-## 📷 Vista previa
+##  Vista previa
 
 ![Preview del portafolio](./images/captura.png)
